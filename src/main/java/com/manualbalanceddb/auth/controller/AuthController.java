@@ -55,9 +55,18 @@ public class AuthController {
         return ResponseEntity.ok(new AuthResponse("Login successfull", token, userDto));
     }
 
+    
     @GetMapping("/db")
     public String dbName() {
-        return mongoTemplate.getDb().getName();
+
+        String db =
+            mongoTemplate.getDb().getName();
+
+        System.out.println(
+            "DATABASE = " + db
+        );
+
+        return db;
     }
 
     @PostMapping("/register")
